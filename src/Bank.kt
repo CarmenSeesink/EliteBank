@@ -1,4 +1,3 @@
-
 class Bank {
     val name = "Elite Bank"
     val clients = mutableListOf<Client>()
