@@ -1,35 +1,36 @@
-fun main() {
-    val name = "Elite Bank"
-    val availableClients = listOf("Bill", "Sam", "Will", "Pieter")
-    val availableAccounts = listOf("Gold Cheque", "Diamond Cheque", "Tax Free Savings", "Easy Access Savings")
-    println("Enter client name")
-//    printClients(availableClients)
-    printAccounts(availableAccounts)
 
-    accounts@while (true) {
-        var accountChosen = readLine().toString()
-        when(accountChosen){
-            "0" -> {
-                Cheque()
-                break@accounts
-            }
-            "1" -> {
-                Savings()
-                break@accounts
-            }
-            else -> {
-                println("Sorry don't seem to have that account")
-                println("Please choose again")
-                printAccounts(availableAccounts)
-                continue@accounts
-            }
+class Bank {
+    val name = "Elite Bank"
+    val clients = mutableListOf<Client>()
+    val accounts = mutableListOf<Account>()
+
+    // Clients
+    fun getClients(): String {
+        return clients.size.toString()
+    }
+
+    fun addClient(name: String, id: Int) {
+        var int = clients.size
+        clients.add(Client(name,id))
+    }
+
+    fun getClientName(): String {
+        return clients[0].getClientName()
+    }
+
+    // Accounts
+    fun getAccounts(): String {
+        return accounts.size.toString()
+    }
+
+    fun addAccount(type: String, balance: Int) {
+        accounts.add(Account(type, balance))
+    }
+
+    fun listAccounts() {
+        println("Accounts: ")
+        accounts.forEach(){
+            println(it.type + " " + " R" + it.balance)
         }
     }
 }
-
-fun printAccounts(accounts: List<String>){
-    for((index, account) in accounts.withIndex()) println("${index} -> ${account}")
-}
-
-
-

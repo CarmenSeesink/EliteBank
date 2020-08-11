@@ -1,7 +1,7 @@
 import java.lang.Exception
 
-//class Cheque: Accounts() {
-//    val name = "Cheque"
+// Derived class
+class Cheque(type: String, balance: Int, val transactionFee : Int, val freeTransactions : Int): Account(type, balance) {
 //    val transactionFee =
-//    val freeTransactions =
-//}
+//    val interestRate =
+}
